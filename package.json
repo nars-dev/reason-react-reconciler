@@ -1,0 +1,33 @@
+{
+  "name": "reason-react-reconciler",
+  "version": "0.20.4000",
+  "description": "react-reconciler bindings in Reason",
+  "dependencies": {
+    "react-reconciler": "0.20.4"
+  },
+  "peerDependencies": {
+    "bs-platform": ">=5.0.0"
+  },
+  "devDependencies": {
+    "bs-platform": "6.0.1"
+  },
+  "scripts": {
+    "build": "bsb -make-world",
+    "clean": "bsb -clean-world"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/briskml/reason-react-reconciler.git"
+  },
+  "keywords": [
+    "reasonml",
+    "bucklescript",
+    "react",
+    "react-reconciler"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/briskml/reason-react-reconciler/issues"
+  },
+  "homepage": "https://github.com/briskml/reason-react-reconciler#readme"
+}
