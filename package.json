@@ -6,10 +6,12 @@
     "react-reconciler": "0.20.4"
   },
   "peerDependencies": {
-    "bs-platform": ">=5.0.0"
+    "bs-platform": ">=5.0.0",
+    "reason-react": "^0.7.0"
   },
   "devDependencies": {
-    "bs-platform": "6.0.1"
+    "bs-platform": "6.0.1",
+    "reason-react": "^0.7.0"
   },
   "scripts": {
     "build": "bsb -make-world",

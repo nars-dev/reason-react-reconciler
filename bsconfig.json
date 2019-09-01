@@ -1,12 +1,13 @@
 {
-  "name": "ocaml-react-reconciler",
-  "namespace": "ReactReconciler",
+  "name": "reason-react-reconciler",
+  "namespace": false,
   "refmt": 3,
   "sources": [
     {
       "dir": "src"
     }
   ],
+  "bs-dependencies": ["reason-react"],
   "package-specs": {
     "module": "commonjs",
     "in-source": true

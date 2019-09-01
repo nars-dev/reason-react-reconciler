@@ -1,4 +1,14 @@
-type hostConfig;
+type hostConfig(
+  'instance,
+  'textInstance,
+  'publicInstance,
+  'rootContainer,
+  'hostContext,
+  'instanceType,
+  'props,
+  'internalInstanceHandle,
+  'eventType,
+);
 
 /**
   * This function creates host config for a reconciler supporting mutation
@@ -143,9 +153,115 @@ external makeHostConfigSupportingMutation:
     ~unhideTextInstance: ('textInstance, 'props) => unit,
     ~resetTextContent: 'instance => unit
   ) =>
-  hostConfig =
+  hostConfig(
+    'instance,
+    'textInstance,
+    'publicInstance,
+    'rootContainer,
+    'hostContext,
+    'instanceType,
+    'props,
+    'internalInstanceHandle,
+    'eventType,
+  ) =
   "";
 
-type t;
+type t(
+  'instance,
+  'textInstance,
+  'publicInstance,
+  'rootContainer,
+  'hostContext,
+  'instanceType,
+  'props,
+  'internalInstanceHandle,
+  'eventType,
+);
 
-[@bs.module] external make: hostConfig => t = "react-reconciler";
+[@bs.module]
+external make:
+  hostConfig(
+    'instance,
+    'textInstance,
+    'publicInstance,
+    'rootContainer,
+    'hostContext,
+    'instanceType,
+    'props,
+    'internalInstanceHandle,
+    'eventType,
+  ) =>
+  t(
+    'instance,
+    'textInstance,
+    'publicInstance,
+    'rootContainer,
+    'hostContext,
+    'instanceType,
+    'props,
+    'internalInstanceHandle,
+    'eventType,
+  ) =
+  "react-reconciler";
+
+type opaqueRoot;
+
+[@bs.send]
+external createContainer:
+  (
+    t(
+      'instance,
+      'textInstance,
+      'publicInstance,
+      'rootContainer,
+      'hostContext,
+      'instanceType,
+      'props,
+      'internalInstanceHandle,
+      'eventType,
+    ),
+    'rootContainer
+  ) =>
+  opaqueRoot =
+  "createContainer";
+
+type expirationTime;
+
+[@bs.send]
+external updateContainer:
+  (
+    t(
+      'instance,
+      'textInstance,
+      'publicInstance,
+      'rootContainer,
+      'hostContext,
+      'instanceType,
+      'props,
+      'internalInstanceHandle,
+      'eventType,
+    ),
+    ~element: React.element,
+    ~container: opaqueRoot
+  ) =>
+  expirationTime =
+  "updateContainer";
+
+[@bs.send]
+external unbatchedUpdates:
+  (
+    t(
+      'instance,
+      'textInstance,
+      'publicInstance,
+      'rootContainer,
+      'hostContext,
+      'instanceType,
+      'props,
+      'internalInstanceHandle,
+      'eventType,
+    ),
+    unit => 'a
+  ) =>
+  'a =
+  "unbatchedUpdates";

@@ -1,10 +1,9 @@
 {
   "build": [ "./node_modules/.bin/bsb", "-make-world" ],
-  "dependencies": {
-    "ocaml": "4.6.x"
-  },
+  "dependencies": { "ocaml": "4.6.x" },
   "devDependencies": {
     "@opam/merlin-lsp": "ocaml/merlin:merlin-lsp.opam#653ded1",
-    "@opam/ocamlformat": "0.9"
+    "@opam/ocamlformat": "0.9",
+    "@esy-ocaml/reason": "^3.4.0"
   }
 }
