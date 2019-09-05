@@ -1,17 +1,15 @@
 {
   "name": "reason-react-reconciler",
-  "version": "0.20.4000",
+  "version": "0.21.0000",
   "description": "react-reconciler bindings in Reason",
   "dependencies": {
-    "react-reconciler": "0.20.4"
+    "react-reconciler": "0.21.0"
   },
   "peerDependencies": {
-    "bs-platform": ">=5.0.0",
-    "reason-react": "^0.7.0"
+    "bs-platform": ">=5.0.0"
   },
   "devDependencies": {
-    "bs-platform": "6.0.1",
-    "reason-react": "^0.7.0"
+    "bs-platform": "6.1.0"
   },
   "scripts": {
     "build": "bsb -make-world",
