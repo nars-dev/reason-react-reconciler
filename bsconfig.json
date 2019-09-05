@@ -7,7 +7,6 @@
       "dir": "src"
     }
   ],
-  "bs-dependencies": ["reason-react"],
   "package-specs": {
     "module": "commonjs",
     "in-source": true

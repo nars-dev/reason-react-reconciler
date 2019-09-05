@@ -1,3 +1,5 @@
+type reactElement;
+
 type hostConfig(
   'instance,
   'textInstance,
@@ -58,7 +60,7 @@ external makeHostConfigSupportingMutation:
                       'rootContainer,
                       'hostContext
                     ) =>
-                    Js.nullable('props),
+                    Js.nullable(array(string)),
     /* Text instances */
     ~createTextInstance: (
                            string,
@@ -241,7 +243,7 @@ external updateContainer:
       'internalInstanceHandle,
       'eventType,
     ),
-    ~element: React.element,
+    ~element: reactElement,
     ~container: opaqueRoot
   ) =>
   expirationTime =
