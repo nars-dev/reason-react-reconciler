@@ -267,3 +267,16 @@ external unbatchedUpdates:
   ) =>
   'a =
   "unbatchedUpdates";
+
+[@bs.get]
+external isThisRendererActing:
+  t(_, _, _, _, _, _, _, _, _) => {. [@bs.set] "current": bool} =
+  "IsThisRendererActing";
+
+[@bs.send]
+external flushPassiveEffects: t(_, _, _, _, _, _, _, _, _) => bool =
+  "flushPassiveEffects";
+
+[@bs.send]
+external batchedUpdates: (t(_, _, _, _, _, _, _, _, _), 'a => 'r, 'a) => 'r =
+  "batchedUpdates";

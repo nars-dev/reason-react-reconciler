@@ -145,7 +145,7 @@ external makeHostConfigSupportingMutation:
     ~commitTextUpdate: ('instance, ~oldText: string, ~newText: string) => unit,
     ~hideTextInstance: 'textInstance => unit,
     ~unhideTextInstance: ('textInstance, 'props) => unit,
-    ~resetTextContent: 'instance => unit,
+    ~resetTextContent: 'instance => unit
   ) =>
   hostConfig(
     'instance,
@@ -259,3 +259,27 @@ external unbatchedUpdates:
   ) =>
   'a =
   "unbatchedUpdates";
+
+[@bs.get]
+external isThisRendererActing:
+  t(
+    'instance,
+    'textInstance,
+    'publicInstance,
+    'rootContainer,
+    'hostContext,
+    'instanceType,
+    'props,
+    'internalInstanceHandle,
+    'eventType,
+  ) =>
+  {. [@bs.set] "current": bool} =
+  "IsThisRendererActing";
+
+[@bs.send]
+external flushPassiveEffects: t(_, _, _, _, _, _, _, _, _) => bool =
+  "flushPassiveEffects";
+
+[@bs.send]
+external batchedUpdates: (t(_, _, _, _, _, _, _, _, _), 'a => 'r, 'a) => 'r =
+  "batchedUpdates";
