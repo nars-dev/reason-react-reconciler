@@ -1,5 +1,10 @@
 type reactElement;
 
+module OpaqueFiber = {
+  type t;
+  [@bs.get] external key: t => Js.null(string) = "key";
+};
+
 type hostConfig(
   'instance,
   'textInstance,
@@ -8,7 +13,6 @@ type hostConfig(
   'hostContext,
   'instanceType,
   'props,
-  'internalInstanceHandle,
   'eventType,
 );
 
@@ -31,7 +35,7 @@ external makeHostConfigSupportingMutation:
                        'props,
                        'rootContainer,
                        'hostContext,
-                       'internalInstanceHandle
+                       OpaqueFiber.t
                      ) =>
                      'instance,
     ~appendInitialChild: (~parentInstance: 'instance, ~child: 'instance) =>
@@ -58,7 +62,7 @@ external makeHostConfigSupportingMutation:
                            string,
                            'rootContainer,
                            'hostContext,
-                           'internalInstanceHandle
+                           OpaqueFiber.t
                          ) =>
                          'instance,
     ~shouldSetTextContent: (~type_: string, 'props) => bool,
@@ -73,12 +77,7 @@ external makeHostConfigSupportingMutation:
     ~isPrimaryRenderer: bool,
     /*** Event components */
     ~mountEventComponent: 'eventComponentInstance => unit,
-    ~handleEventTarget: (
-                          'eventType,
-                          'props,
-                          'rootContainer,
-                          'internalInstanceHandle
-                        ) =>
+    ~handleEventTarget: ('eventType, 'props, 'rootContainer, OpaqueFiber.t) =>
                         bool,
     ~commitEventTarget: (
                           'eventType,
@@ -101,20 +100,14 @@ external makeHostConfigSupportingMutation:
     /* Mutation */
     ~appendChild: (~parent: 'instance, ~child: 'instance) => unit,
     ~appendChildToContainer: ('rootContainer, 'instance) => unit,
-    ~commitMount: (
-                    'instance,
-                    'instanceType,
-                    'props,
-                    'internalInstanceHandle
-                  ) =>
-                  unit,
+    ~commitMount: ('instance, 'instanceType, 'props, OpaqueFiber.t) => unit,
     ~commitUpdate: (
                      'instance,
                      array(unit),
                      string,
                      ~oldProps: 'props,
                      ~newProps: 'props,
-                     'internalInstanceHandle
+                     OpaqueFiber.t
                    ) =>
                    unit,
     ~insertBefore: (
@@ -155,7 +148,6 @@ external makeHostConfigSupportingMutation:
     'hostContext,
     'instanceType,
     'props,
-    'internalInstanceHandle,
     'eventType,
   ) =
   "";
@@ -168,7 +160,6 @@ type t(
   'hostContext,
   'instanceType,
   'props,
-  'internalInstanceHandle,
   'eventType,
 );
 
@@ -182,7 +173,6 @@ external make:
     'hostContext,
     'instanceType,
     'props,
-    'internalInstanceHandle,
     'eventType,
   ) =>
   t(
@@ -193,7 +183,6 @@ external make:
     'hostContext,
     'instanceType,
     'props,
-    'internalInstanceHandle,
     'eventType,
   ) =
   "react-reconciler";
@@ -211,7 +200,6 @@ external createContainer:
       'hostContext,
       'instanceType,
       'props,
-      'internalInstanceHandle,
       'eventType,
     ),
     'rootContainer
@@ -232,7 +220,6 @@ external updateContainer:
       'hostContext,
       'instanceType,
       'props,
-      'internalInstanceHandle,
       'eventType,
     ),
     ~element: reactElement,
@@ -252,7 +239,6 @@ external unbatchedUpdates:
       'hostContext,
       'instanceType,
       'props,
-      'internalInstanceHandle,
       'eventType,
     ),
     unit => 'a
@@ -270,16 +256,15 @@ external isThisRendererActing:
     'hostContext,
     'instanceType,
     'props,
-    'internalInstanceHandle,
     'eventType,
   ) =>
   {. [@bs.set] "current": bool} =
   "IsThisRendererActing";
 
 [@bs.send]
-external flushPassiveEffects: t(_, _, _, _, _, _, _, _, _) => bool =
+external flushPassiveEffects: t(_, _, _, _, _, _, _, _) => bool =
   "flushPassiveEffects";
 
 [@bs.send]
-external batchedUpdates: (t(_, _, _, _, _, _, _, _, _), 'a => 'r, 'a) => 'r =
+external batchedUpdates: (t(_, _, _, _, _, _, _, _), 'a => 'r, 'a) => 'r =
   "batchedUpdates";
