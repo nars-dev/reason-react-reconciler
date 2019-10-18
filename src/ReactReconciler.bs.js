@@ -2,7 +2,7 @@
 'use strict';
 
 
-var OpaqueFiber = /* module */[];
+var OpaqueFiber = { };
 
 exports.OpaqueFiber = OpaqueFiber;
 /* No side effect */
