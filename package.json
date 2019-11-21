@@ -9,7 +9,7 @@
     "bs-platform": ">=5.0.0"
   },
   "devDependencies": {
-    "bs-platform": "6.x.x"
+    "bs-platform": "7.0.0-dev.1"
   },
   "scripts": {
     "build": "bsb -make-world",
