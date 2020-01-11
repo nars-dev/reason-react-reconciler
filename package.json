@@ -3,13 +3,13 @@
   "version": "0.21.0",
   "description": "react-reconciler bindings in Reason",
   "dependencies": {
-    "react-reconciler": "0.21.0"
+    "react-reconciler": "0.24.0"
   },
   "peerDependencies": {
     "bs-platform": ">=5.0.0"
   },
   "devDependencies": {
-    "bs-platform": "7.0.0"
+    "bs-platform": "7.0.1"
   },
   "scripts": {
     "build": "bsb -make-world",
