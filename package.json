@@ -1,6 +1,6 @@
 {
   "name": "reason-react-reconciler",
-  "version": "0.21.0",
+  "version": "0.24.0",
   "description": "react-reconciler bindings in Reason",
   "dependencies": {
     "react-reconciler": "0.24.0"
